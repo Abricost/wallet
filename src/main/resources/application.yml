@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  datasource:
+    name: primaryDS
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=my_schema
+    username: postgres
+    password: postgres
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/db.changelog-master.xml
+    drop-first: false
+    default-schema: my_schema
+    clear-check-sums: true
+
+#  jpa:
+#    open-in-view: false
+#    hibernate:
+#      ddl-auto: validate
+
+
+

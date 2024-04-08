@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="01_create_table_wallet" author="Abricost">
+        <sql>
+            CREATE TABLE wallet (
+                id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+                amount DOUBLE PRECISION );
+        </sql>
+    </changeSet>
+
+    <changeSet id="03_insert_into_wallet" author="Abricost">
+        <sql>
+            INSERT INTO wallet (id, amount) VALUES ('aaaaaaaa-bbbb-cccc-dddd-111111111111', 7000);
+            INSERT INTO wallet (id, amount) VALUES ('aaaaaaaa-bbbb-cccc-dddd-222222222222', 14000.2);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

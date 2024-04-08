@@ -1,0 +1,28 @@
+version: '2.1'
+
+services:
+
+  db:
+    image: postgres:15.0
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init_schemas.sql:/docker-entrypoint-initdb.d/init_schemas.sql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: no
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres?currentSchema=my_schema
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres

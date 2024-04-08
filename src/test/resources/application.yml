@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /api/v1
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    name: primaryDS
+    url: jdbc:h2:mem:library;MODE=PostgreSQL
+    username: admin
+    password: admin
+  liquibase:
+    enabled: false
